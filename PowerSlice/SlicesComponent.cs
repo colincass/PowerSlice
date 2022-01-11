@@ -28,8 +28,21 @@ namespace PowerSlice
         /// <returns>The component</returns>
         public override IComponent CreateComponent()
         {
-            var component = base.CreateComponent();   
-            component.Settings.Add(new Setting("queries", _slices.ToList(), false));
+            var component = base.CreateComponent();
+            component.Settings.Add(new Setting("queries", _slices.Select(s => new
+            {
+                Name = s.Name,
+                DisplayName = s.DisplayName,
+                CreateOptions = s.CreateOptions,
+                Order = s.Order,
+                PlugInAreas = s.PlugInAreas,
+                Rank = s.Rank,
+                SortOrder = s.SortOrder,
+                VersionSpecific = s.VersionSpecific,
+                DefaultSortOption = s.DefaultSortOption,
+                HideSortOptions = s.HideSortOptions,
+                SortOptions = s.SortOptions,
+            }).ToList(), false));
             return component;
         }
     }

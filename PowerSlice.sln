@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerSlice", "PowerSlice\PowerSlice.csproj", "{5F76D9CF-1487-465F-B092-B3E4F44EF0FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerSlice", "PowerSlice\PowerSlice.csproj", "{5F76D9CF-1487-465F-B092-B3E4F44EF0FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3A99A9FC-C2FC-4774-8827-6E340B6990E9}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3A99A9
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C981ACCA-4C09-4B23-A702-B05AC309746B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlloyMvcTemplates", "sample\AlloyMvcTemplates\AlloyMvcTemplates.csproj", "{03260AE9-96B1-44A0-A297-14F457B652EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{F1D681DC-ADBB-4E05-957F-2C825B4E3FAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,8 +28,18 @@ Global
 		{5F76D9CF-1487-465F-B092-B3E4F44EF0FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F76D9CF-1487-465F-B092-B3E4F44EF0FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F76D9CF-1487-465F-B092-B3E4F44EF0FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03260AE9-96B1-44A0-A297-14F457B652EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03260AE9-96B1-44A0-A297-14F457B652EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03260AE9-96B1-44A0-A297-14F457B652EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03260AE9-96B1-44A0-A297-14F457B652EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03260AE9-96B1-44A0-A297-14F457B652EE} = {F1D681DC-ADBB-4E05-957F-2C825B4E3FAB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A863676A-FDA2-4CE4-A877-55EC559C6B54}
 	EndGlobalSection
 EndGlobal
