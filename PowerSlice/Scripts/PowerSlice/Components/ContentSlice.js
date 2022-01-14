@@ -175,7 +175,6 @@ define([
                     newQuery = this._getQuery(newQueryName),
                     selectionChanged = newQueryName !== this.contentQuery.get("queryName");
 
-                    console.log("newQueryName: "+newQueryName);
                 // Set parameters for contentQuery
                 this.contentQuery.set("sortKey", this.sortKey || null);
                 this.contentQuery.set("descending", this.sortKey ? this.orderDescending : false);
@@ -183,7 +182,6 @@ define([
 
                 if(selectionChanged && this.sortButton) {
                     // Set available create options
-                    console.log("newQuery.createOptions: "+newQuery.createOptions);
                     this.set("createOptions", newQuery.createOptions);
                     // Set available sort options and show/hide sort button
                     this.set("sortOptions", newQuery.sortOptions);
@@ -216,7 +214,6 @@ define([
         },
 
         _setCreateOptionsAttr: function(options) {
-            console.log(options);
             if(options && options.length > 1) {
                 var menu = new DropDownMenu({ style: "display: none;" });
                 array.forEach(options, function (option) {

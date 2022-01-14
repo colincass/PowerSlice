@@ -74,20 +74,17 @@
 
             this.toolbarGroupNode = domConstruct.toDom("<div class=\"epi-floatRight\"></div>");
             domConstruct.place(this.toolbarGroupNode, this.toolbar.domNode);
-console.log("this.queries: "+JSON.stringify(this.queries));
             options = array.map(this.queries, function (item) {
                 return {
                     label: item.displayName,
                     value: item.name
                 };
             }, this);
-            console.log("options: "+ JSON.stringify(options));
             querySelection = this.querySelection = new Select({
                 "class": "epi-chromeless epi-chromeless--with-arrow epi-flat epi-gadget__selector",
                 name: "QuerySelection",
                 options: options
             });
-            console.log("this.querySelection: "+this.querySelection);
             domConstruct.place(this.querySelection.domNode, this.toolbarGroupNode, "before");
 
             reloadButton = this.reloadButton = new Button({
