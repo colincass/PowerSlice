@@ -1,5 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="version.props" />
+  <Import Project="..\build\nuspec.props" />
+  <Import Project="..\build\DependencyVersions.props" />  
   <PropertyGroup>
     <Product>PowerSlice</Product>
     <TargetFramework>net5.0</TargetFramework>
@@ -7,7 +9,7 @@
     <NuspecFile>PowerSlice.nuspec</NuspecFile>
     <IsPackable>true</IsPackable>
     <PackageOutputPath>$(SolutionDir)artifacts\packages\</PackageOutputPath>
-    <NuspecProperties>Configuration=$(Configuration);version=$(PackageVersion);uiVersion=$(UIVersion);uiNextMajorVersion=$(uiNextMajorVersion);</NuspecProperties>
+    <NuspecProperties>Configuration=$(Configuration);version=$(PackageVersion);coreVersion=$(coreVersion);coreNextMajorVersion=$(coreNextMajorVersion);findVersion=$(findVersion);findNextMajorVersion=$(findNextMajorVersion);fwVersion=$(fwVersion);fwNextMajorVersion=$(fwNextMajorVersion)</NuspecProperties>
   </PropertyGroup>
 	
   <ItemGroup>
@@ -31,8 +33,8 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="EPiServer.Find" Version="14.0.4" />
-    <PackageReference Include="EPiServer.Find.Cms" Version="14.0.4" />
+    <PackageReference Include="EPiServer.Find" Version="$(FindVersionCommon)" />
+    <PackageReference Include="EPiServer.Find.Cms" Version="$(FindVersionCommon)" />
   </ItemGroup>
 
 </Project>
