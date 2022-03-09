@@ -16,7 +16,7 @@
       <dependency id="EPiServer.Find" version="[$findVersion$,$findNextMajorVersion$)" />
       <dependency id="EPiServer.Find.Cms" version="[$findVersion$,$findNextMajorVersion$)" />
       <dependency id="EPiServer.Framework" version="[$fwVersion$,$fwNextMajorVersion$)" />
-      <dependency id="EPiServer.Framework.AspNet" version="[$fwVersion$,$fwNextMajorVersion$)" />
+      <dependency id="EPiServer.Framework.AspNetCore" version="[$fwVersion$,$fwNextMajorVersion$)" />
     </dependencies>
   </metadata>
   <files>
