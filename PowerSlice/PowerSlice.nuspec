@@ -18,11 +18,16 @@
       <dependency id="EPiServer.Framework" version="[$fwVersion$,$fwNextMajorVersion$)" />
       <dependency id="EPiServer.Framework.AspNetCore" version="[$fwVersion$,$fwNextMajorVersion$)" />
     </dependencies>
+    <contentFiles>
+      <files include="any/any/modules/_protected/PowerSlice/PowerSlice.zip" buildAction="None" copyToOutput="true"  />
+    </contentFiles>
   </metadata>
   <files>
 		<file src="PowerSlice\assets\readme.txt" target="" />
 		<file src="PowerSlice\PowerSlice\license.txt" target="" />
 		<file src="PowerSlice\PowerSlice\bin\$configuration$\net5.0\PowerSlice.dll" target="lib\net5.0\" />
 		<file src="PowerSlice\PowerSlice\bin\$configuration$\net5.0\PowerSlice.pdb" target="lib\net5.0\" />
+    <file src="zipoutput\PowerSlice.zip" target="contentFiles\any\any\modules\_protected\PowerSlice" />
+    <file src="build\CopyZipFiles.targets" target="build\net5.0\PowerSlice.targets" />
   </files>
 </package>
