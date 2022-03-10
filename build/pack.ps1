@@ -27,6 +27,26 @@ $fwNextMajorVersion = ($fwMajor.ToString() + ".0.0")
 [xml] $versionFile = Get-Content "./PowerSlice/version.props"
 $pVersion = $versionFile.SelectSingleNode("Project/PropertyGroup/VersionPrefix").InnerText + $versionSuffix 
 
+Remove-Item -Path ./zipoutput -Recurse -Force -Confirm:$false -ErrorAction Ignore
+Copy-Item "./PowerSlice/clientResources/PowerSlice" -Destination "./zipoutput/PowerSlice/clientResources/PowerSlice" -Recurse
+
+New-Item -Path "./zipoutput/PowerSlice" -Name "$pVersion" -ItemType "directory"
+[xml] $moduleFile = Get-Content "./PowerSlice/module.config"
+$module = $moduleFile.SelectSingleNode("module")
+$module.Attributes["clientResourceRelativePath"].Value = $pVersion
+$moduleFile.Save("./zipoutput/PowerSlice/module.config")
+Move-Item -Path "./zipoutput/PowerSlice/clientResources" -Destination "./zipoutput/PowerSlice/$pVersion/clientresources"
+
+Copy-Item "./PowerSlice/clientResources/css" -Destination "./zipoutput/PowerSlice/$pVersion/clientResources/css" -Recurse
+Copy-Item "./PowerSlice/clientResources/images" -Destination "./zipoutput/PowerSlice/$pVersion/clientResources/images" -Recurse
+
+$compress = @{
+  Path = "./zipoutput/PowerSlice/*"
+  CompressionLevel = "Optimal"
+  DestinationPath = "./zipoutput/PowerSlice.zip"
+}
+Compress-Archive @compress
+
 dotnet pack --no-restore --no-build -c $configuration /p:PackageVersion=$pVersion /p:CoreVersion=$coreVersion /p:CoreNextMajorVersion=$coreNextMajorVersion /p:FindVersion=$findVersion /p:FindindNextMajorVersion=$findNextMajorVersion /p:FwVersion=$fwVersion /p:FwNextMajorVersion=$fwNextMajorVersion PowerSlice.sln
 
 Pop-Location

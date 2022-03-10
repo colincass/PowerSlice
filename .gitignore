@@ -171,3 +171,4 @@ sample/AlloyMvcTemplates/App_Data/**
 sample/AlloyMvcTemplates/App_Code/**
 /nupkgs
 /modules
+/zipoutput

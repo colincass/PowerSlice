@@ -13,23 +13,23 @@
   </PropertyGroup>
 	
   <ItemGroup>
-    <EmbeddedResource Include="Scripts\PowerSlice\Components\ContentSlice.js" />
-    <EmbeddedResource Include="Scripts\PowerSlice\Components\ContentSliceGrid.js" />
-    <EmbeddedResource Include="Scripts\PowerSlice\Components\CreateSpecificContent.js" />
+    <EmbeddedResource Include="clientResources\PowerSlice\Components\ContentSlice.js" />
+    <EmbeddedResource Include="clientResources\PowerSlice\Components\ContentSliceGrid.js" />
+    <EmbeddedResource Include="clientResources\PowerSlice\Components\CreateSpecificContent.js" />
     <EmbeddedResource Include="lang\PowerSlice.xml" />
     <EmbeddedResource Include="module.config" />
-    <EmbeddedResource Include="Scripts\css\powerslice.css.map" />
-    <EmbeddedResource Include="Scripts\css\powerslice.less" />
-    <EmbeddedResource Include="Scripts\PowerSlice\Components\templates\Tasks.html" />
-    <EmbeddedResource Include="Scripts\PowerSlice\Components\Tasks.js" />
-    <EmbeddedResource Include="Scripts\PowerSlice\Components\CreateContentInSliceDialog.js" />
-    <EmbeddedResource Include="Scripts\PowerSlice\Components\SortDropDown.js" />
-    <EmbeddedResource Include="Scripts\PowerSlice\Components\templates\CreateContentInSliceDialog.html" />
-    <EmbeddedResource Include="Scripts\css\powerslice.css" />
-    <EmbeddedResource Include="Scripts\images\commonFormArrows.png" />
-    <EmbeddedResource Include="Scripts\images\sortAscending.png" />
-    <EmbeddedResource Include="Scripts\images\sortDescending.png" />
-    <EmbeddedResource Include="Scripts\images\sorticon.png" />
+    <EmbeddedResource Include="clientResources\css\powerslice.css.map" />
+    <EmbeddedResource Include="clientResources\css\powerslice.less" />
+    <EmbeddedResource Include="clientResources\PowerSlice\Components\templates\Tasks.html" />
+    <EmbeddedResource Include="clientResources\PowerSlice\Components\Tasks.js" />
+    <EmbeddedResource Include="clientResources\PowerSlice\Components\CreateContentInSliceDialog.js" />
+    <EmbeddedResource Include="clientResources\PowerSlice\Components\SortDropDown.js" />
+    <EmbeddedResource Include="clientResources\PowerSlice\Components\templates\CreateContentInSliceDialog.html" />
+    <EmbeddedResource Include="clientResources\css\powerslice.css" />
+    <EmbeddedResource Include="clientResources\images\commonFormArrows.png" />
+    <EmbeddedResource Include="clientResources\images\sortAscending.png" />
+    <EmbeddedResource Include="clientResources\images\sortDescending.png" />
+    <EmbeddedResource Include="clientResources\images\sorticon.png" />
   </ItemGroup>
 	
   <ItemGroup>
