@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <CmsCoreVersionCommon>12.0.0</CmsCoreVersionCommon>
+	<FindVersionCommon>14.0.0</FindVersionCommon>
+    <FrameworkVersionCommon>12.0.0</FrameworkVersionCommon>
+</PropertyGroup>
+</Project>

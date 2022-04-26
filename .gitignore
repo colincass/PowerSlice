@@ -142,7 +142,6 @@ Desktop.ini
 *.egg
 *.egg-info
 dist
-build
 eggs
 parts
 bin
@@ -166,3 +165,10 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+## Ignore files generated or required by Episerver sample site
+sample/AlloyMvcTemplates/App_Data/**
+sample/AlloyMvcTemplates/App_Code/**
+/nupkgs
+/modules
+/zipoutput
