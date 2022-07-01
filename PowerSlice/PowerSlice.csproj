@@ -4,7 +4,7 @@
   <Import Project="..\build\DependencyVersions.props" />  
   <PropertyGroup>
     <Product>PowerSlice</Product>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <OutputType>Library</OutputType>    
     <NuspecFile>PowerSlice.nuspec</NuspecFile>
     <IsPackable>true</IsPackable>

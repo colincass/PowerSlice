@@ -25,9 +25,9 @@
   <files>
 		<file src="PowerSlice\assets\readme.txt" target="" />
 		<file src="PowerSlice\PowerSlice\license.txt" target="" />
-		<file src="PowerSlice\PowerSlice\bin\$configuration$\net5.0\PowerSlice.dll" target="lib\net5.0\" />
-		<file src="PowerSlice\PowerSlice\bin\$configuration$\net5.0\PowerSlice.pdb" target="lib\net5.0\" />
+		<file src="PowerSlice\PowerSlice\bin\$configuration$\net6.0\PowerSlice.dll" target="lib\net6.0\" />
+		<file src="PowerSlice\PowerSlice\bin\$configuration$\net6.0\PowerSlice.pdb" target="lib\net6.0\" />
     <file src="PowerSlice\zipoutput\PowerSlice.zip" target="contentFiles\any\any\modules\_protected\PowerSlice" />
-    <file src="PowerSlice\build\CopyZipFiles.targets" target="build\net5.0\PowerSlice.targets" />
+    <file src="PowerSlice\build\CopyZipFiles.targets" target="build\net6.0\PowerSlice.targets" />
   </files>
 </package>

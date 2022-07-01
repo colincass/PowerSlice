@@ -3,13 +3,13 @@
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
       - 'develop'
       - 'netcore'
   pull_request:
     branches:
       - '*'
-      - '!main'
+      - '!master'
 jobs:
   build_test_pack:
     name: Build, test & pack
@@ -33,19 +33,19 @@ jobs:
       - name: Restore
         run: dotnet restore PowerSlice.sln --configfile Nuget.config
       - name: Build (Release version)
-        if:  ${{ github.ref == 'refs/heads/main' }}
+        if:  ${{ github.ref == 'refs/heads/master' }}
         run: dotnet build --no-restore --configuration $env:buildConfiguration 
       - name: Build (Pre-Release version)
-        if:  ${{ github.ref != 'refs/heads/main' }}
+        if:  ${{ github.ref != 'refs/heads/master' }}
         run: dotnet build --no-restore --configuration $env:buildConfiguration --version-suffix $env:versionSuffix
       - name: Test
         run: dotnet test --no-build --configuration $env:buildConfiguration
       - name: Pack  (Release version)
-        if:  ${{ github.ref == 'refs/heads/main' }}  
+        if:  ${{ github.ref == 'refs/heads/master' }}  
         run: |
           ./build/pack.ps1 
       - name: Pack  (Pre-Release version)
-        if:  ${{ github.ref != 'refs/heads/main' }}  
+        if:  ${{ github.ref != 'refs/heads/master' }}  
         run: |
           ./build/pack.ps1 -versionSuffix $env:versionSuffix
       - name: Publish packages
