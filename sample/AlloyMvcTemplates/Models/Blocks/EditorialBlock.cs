@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using EPiServer.Shell;
 
 namespace AlloyTemplates.Models.Blocks
 {
@@ -17,5 +18,14 @@ namespace AlloyTemplates.Models.Blocks
         [Display(GroupName = SystemTabNames.Content)]
         [CultureSpecific]
         public virtual XhtmlString MainBody { get; set; }
+    }
+
+    [UIDescriptorRegistration]
+    public class EditorialBlockUIDescriptor : UIDescriptor<EditorialBlock>
+    {
+        public EditorialBlockUIDescriptor()
+            : base("editorial-block-icon")
+        {
+        }
     }
 }

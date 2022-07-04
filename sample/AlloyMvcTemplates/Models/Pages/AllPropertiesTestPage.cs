@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using AlloyTemplates.Models.Blocks;
 using EPiServer;
 using EPiServer.Cms.Shell.UI.ObjectEditing.EditorDescriptors;
 using EPiServer.Core;
@@ -59,24 +60,40 @@ namespace AlloyTemplates.Models.Pages
         [UIHint(UIHint.Video)]
         public virtual ContentReference MediaReference4 { get; set; }
 
+        [Display(Name = "Content Reference (UIHint `Folder`)", GroupName = SystemTabNames.Content, Order = 36)]
+        [UIHint(UIHint.AssetsFolder)]
+        public virtual ContentReference FolderReference { get; set; }
+
         [Display(Name = "Content Reference (UIHint `Image`)", GroupName = SystemTabNames.Content, Order = 37)]
         [UIHint(UIHint.Image)]
         public virtual ContentReference MediaReference5 { get; set; }
 
-        [Display(Name = "Block Reference (AllowedTypes)", GroupName = SystemTabNames.Content, Order = 38)]
-        [AllowedTypes(typeof(BlockData))]
+        [Display(Name = "Content Reference (AllowedTypes `ImageData & VideoData`)", GroupName = SystemTabNames.Content, Order = 38)]
+        [AllowedTypes(typeof(ImageData), typeof(VideoData))]
+        public virtual ContentReference MediaReference6 { get; set; }
+
+        [Display(Name = "Block Reference (AllowedTypes)", GroupName = SystemTabNames.Content, Order = 40)]
+        [AllowedTypes(AllowedTypes = new[] { typeof(BlockData) }, RestrictedTypes = new[] { typeof(ButtonBlock), typeof(EditorialBlock) })]
         public virtual ContentReference BlockReference1 { get; set; }
 
-        [Display(Name = "Block Reference (UIHint `Block`)", GroupName = SystemTabNames.Content, Order = 39)]
+        [Display(Name = "Block Reference (UIHint `Block`)", GroupName = SystemTabNames.Content, Order = 41)]
         [UIHint(UIHint.Block)]
         public virtual ContentReference BlockReference2 { get; set; }
 
-        [Display(Name = "Content Reference [Readonly]", GroupName = SystemTabNames.Content, Order = 40)]
+        [Display(Name = "Block Reference (AllowedTypes - 3 block types)", GroupName = SystemTabNames.Content, Order = 42)]
+        [AllowedTypes(typeof(EditorialBlock), typeof(TeaserBlock), typeof(JumbotronBlock))]
+        public virtual ContentReference BlockReference3 { get; set; }
+
+        [Display(Name = "Content Reference [Readonly]", GroupName = SystemTabNames.Content, Order = 45)]
         [ReadOnly(true)]
         public virtual ContentReference ContentReferenceReadonly1 { get; set; }
 
         [Display(Name = "Content Reference List", GroupName = SystemTabNames.Content, Order = 50)]
         public virtual IEnumerable<ContentReference> ContentReferenceList1 { get; set; }
+
+        [Display(Name = "Content Reference List (Allowed Types)", GroupName = SystemTabNames.Content, Order = 50)]
+        [AllowedTypes(typeof(EditorialBlock), typeof(TeaserBlock), typeof(JumbotronBlock))]
+        public virtual IEnumerable<ContentReference> ContentReferenceListAllowedTypes { get; set; }
 
         [Display(Name = "Content Reference List [Readonly]", GroupName = SystemTabNames.Content, Order = 60)]
         [ReadOnly(true)]
@@ -95,6 +112,10 @@ namespace AlloyTemplates.Models.Pages
         [Display(Name = "Url [Readonly]", GroupName = SystemTabNames.Content, Order = 82)]
         [ReadOnly(true)]
         public virtual Url UrlReadonly { get; set; }
+
+        [UIHint(UIHint.Image)]
+        [Display(Name = "Url to image", GroupName = SystemTabNames.Content, Order = 82)]
+        public virtual Url UrlToImage { get; set; }
 
         [Display(Name = "Text", GroupName = SystemTabNames.Content, Order = 90)]
         public virtual string Text1 { get; set; }

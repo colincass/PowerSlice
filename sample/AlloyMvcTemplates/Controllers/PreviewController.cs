@@ -3,6 +3,7 @@ using EPiServer.Core;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.Framework.Web;
 using AlloyTemplates.Business;
+using AlloyTemplates.Models.Blocks;
 using AlloyTemplates.Models.Pages;
 using AlloyTemplates.Models.ViewModels;
 using EPiServer.Web;
@@ -24,7 +25,7 @@ namespace AlloyTemplates.Controllers
         AvailableWithoutTag = false)]
     [VisitorGroupImpersonation]
     [RequireClientResources]
-    public class PreviewController : ActionControllerBase, IRenderTemplate<BlockData>, IModifyLayout
+    public class PreviewController : ActionControllerBase, IRenderTemplate<SiteBlockData>, IModifyLayout
     {
         private readonly IContentLoader _contentLoader;
         private readonly TemplateResolver _templateResolver;

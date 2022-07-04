@@ -19,12 +19,6 @@ namespace AlloyTemplates.Models.Pages
         IncludeOn = new[] { typeof(StartPage) })]
     public class ProductPage : StandardPage, IHasRelatedContent
     {
-        [Required]
-        [Display(Order = 305)]
-        [UIHint(Global.SiteUIHints.StringsCollection)]
-        [CultureSpecific]
-        public virtual IList<string> UniqueSellingPoints { get; set; }
-
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 330)]

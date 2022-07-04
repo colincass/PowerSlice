@@ -1,4 +1,3 @@
-﻿using EPiServer.Editor;
 using EPiServer.Shell;
 using AlloyTemplates.Models.Pages;
 

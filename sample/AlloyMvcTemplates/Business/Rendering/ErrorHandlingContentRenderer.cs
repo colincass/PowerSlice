@@ -2,15 +2,12 @@ using System;
 using System.IO;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
-using EPiServer.Security;
 
 using AlloyTemplates.Models.ViewModels;
 using EPiServer.Web.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
-using EPiServer.Web;
 using AlloyTemplates.Helpers;
 
 namespace AlloyTemplates.Business.Rendering
