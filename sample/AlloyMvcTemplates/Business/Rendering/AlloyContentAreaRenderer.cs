@@ -3,7 +3,6 @@ using EPiServer.Core;
 using EPiServer.Core.Html.StringParsing;
 using EPiServer.Web.Mvc.Html;
 using EPiServer;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AlloyTemplates.Business.Rendering

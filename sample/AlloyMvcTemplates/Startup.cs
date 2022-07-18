@@ -1,5 +1,4 @@
 using AlloyMvcTemplates.Extensions;
-using AlloyMvcTemplates.Infrastructure;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Data;
 using EPiServer.DependencyInjection;
@@ -17,8 +16,8 @@ using EPiServer.Web.Mvc.Html;
 using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.Admin;
 using EPiServer.Cms.UI.VisitorGroups;
-using EPiServer.Framework.Hosting;
-using EPiServer.Web.Hosting;
+using EPiServer.Cms.Shell.UI;
+using AlloyMvcTemplates;
 
 namespace EPiServer.Templates.Alloy.Mvc
 {
@@ -36,7 +35,7 @@ namespace EPiServer.Templates.Alloy.Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             var dbPath = Path.Combine(_webHostingEnvironment.ContentRootPath, "App_Data\\Alloy.mdf");
-            var connectionstring = _configuration.GetConnectionString("EPiServerDB") ?? $"Data Source=(LocalDb)\\MSSQLLocalDB;AttachDbFilename={dbPath};Initial Catalog=alloy_mvc_netcore;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=True";
+            var connectionstring = _configuration.GetConnectionString("EPiServerDB") ?? $"Data Source=(LocalDb)\\MSSQLLocalDB;AttachDbFilename={dbPath};Initial Catalog=alloy_mvc_netcore;Integrated Security=True;Encrypt=False;Connect Timeout=30;MultipleActiveResultSets=True";
 
             services.Configure<SchedulerOptions>(o =>
             {
@@ -59,15 +58,16 @@ namespace EPiServer.Templates.Alloy.Mvc
                 });
             }
 
-            services.AddMvc()
-                .AddJsonOptions(options => { options.JsonSerializerOptions.IgnoreNullValues = true; }); ;
+            services.AddMvc();
             services.AddAlloy();
             services.AddCmsHost()
                 .AddCmsHtmlHelpers()
                 .AddCmsUI()
                 .AddAdmin()
                 .AddVisitorGroupsUI()
-                .AddTinyMce();
+                .AddTinyMce()
+                .AddAdminUserRegistration(options => options.Behavior = RegisterAdminUserBehaviors.Enabled |
+                                                                        RegisterAdminUserBehaviors.LocalRequestsOnly);
 
             services.AddFind();
 
@@ -81,7 +81,6 @@ namespace EPiServer.Templates.Alloy.Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseMiddleware<AdministratorRegistrationPageMiddleware>();
             }
 
             app.UseStaticFiles();
@@ -91,40 +90,11 @@ namespace EPiServer.Templates.Alloy.Mvc
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapContent();
-                endpoints.MapControllerRoute("Register", "/Register", new { controller = "Register", action = "Index" });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-        }
-    }
-    internal static class IntenalServiceCollectionExtensions
-    {
-        public static IServiceCollection AddUIMappedFileProviders(this IServiceCollection services, string applicationRootPath, string uiSolutionRelativePath)
-        {
-            services.Configure<ClientResourceOptions>(o => o.Debug = true);
-
-            var uiSolutionFolder = Path.Combine(applicationRootPath, uiSolutionRelativePath);
-            EnsureDictionary(new DirectoryInfo(Path.Combine(applicationRootPath, "modules/_protected")));
-            services.Configure<CompositeFileProviderOptions>(c =>
-            {
-                c.BasePathFileProviders.Add(new MappingPhysicalFileProvider("/EPiServer/PowerSlice", string.Empty, Path.Combine(uiSolutionFolder, "PowerSlice")));
-            });
-            return services;
-        }
-
-        private static void EnsureDictionary(DirectoryInfo directoryInfo)
-        {
-            if (!directoryInfo.Parent.Exists)
-            {
-                EnsureDictionary(directoryInfo.Parent);
-            }
-
-            if (!directoryInfo.Exists)
-            {
-                directoryInfo.Create();
-            }
         }
     }
 }

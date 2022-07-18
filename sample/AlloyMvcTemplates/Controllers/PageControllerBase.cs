@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using EPiServer.Web.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using EPiServer.ServiceLocation;
+using Microsoft.Extensions.Options;
+using EPiServer.Shell.Security.Internal;
 
 namespace AlloyTemplates.Controllers
 {
@@ -17,8 +22,9 @@ namespace AlloyTemplates.Controllers
     public abstract class PageControllerBase<T> : PageController<T>, IModifyLayout
         where T : SitePageData
     {
-
-        protected EPiServer.ServiceLocation.Injected<UISignInManager> UISignInManager;
+        protected Injected<SecurityConfiguration> securityConfiguration;
+        protected Injected<IHttpContextAccessor> contextAccessor;
+        protected Injected<IOptions<AuthenticationOptions>> authenticationOptions;
 
         /// <summary>
         /// Signs out the current user and redirects to the Index action of the same controller.
@@ -31,7 +37,7 @@ namespace AlloyTemplates.Controllers
         /// </remarks>
         public async Task<IActionResult> Logout()
         {
-            await UISignInManager.Service.SignOutAsync();
+            await SignOutAsync();
             return Redirect(HttpContext.RequestServices.GetService<UrlResolver>().GetUrl(PageContext.ContentLink, PageContext.LanguageID));
         }
 
@@ -42,6 +48,24 @@ namespace AlloyTemplates.Controllers
             {
                 layoutModel.HideHeader = page.HideSiteHeader;
                 layoutModel.HideFooter = page.HideSiteFooter;
+            }
+        }
+
+        private async Task SignOutAsync()
+        {
+            var uiSignInManager = securityConfiguration.Service?.UiSignInManager;
+            if (uiSignInManager != null)
+            {
+                await uiSignInManager.SignOutAsync();
+                return;
+            }
+
+            if (authenticationOptions.Service != null && contextAccessor.Service?.HttpContext != null)
+            {
+                foreach (var scheme in authenticationOptions.Service.Value.Schemes)
+                {
+                    await contextAccessor.Service.HttpContext.SignOutAsync(scheme.Name);
+                }
             }
         }
     }

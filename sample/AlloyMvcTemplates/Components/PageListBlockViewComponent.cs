@@ -8,7 +8,6 @@ using AlloyTemplates.Models.ViewModels;
 using EPiServer.Web.Mvc;
 using EPiServer;
 using Microsoft.AspNetCore.Mvc;
-using EPiServer.Cms.AspNetCore.Mvc;
 
 namespace AlloyTemplates.Controllers
 {

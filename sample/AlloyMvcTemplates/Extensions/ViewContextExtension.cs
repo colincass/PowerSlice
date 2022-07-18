@@ -1,7 +1,4 @@
-using System;
-using AlloyTemplates.Controllers;
 using EPiServer.Web;
-using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.DependencyInjection;
